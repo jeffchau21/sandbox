@@ -8,7 +8,7 @@ class AdderTest extends PHPUnit_Framework_TestCase
     {
 	$obj = new Adder;
 	$c = $obj->add(3,4);
-	$this->assertEquals(6,$c);
+	$this->assertEquals(7,$c);
     }
  
 }
