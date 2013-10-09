@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Adder.php';
+require_once '../Adder.php';
 
 class AdderTest extends PHPUnit_Framework_TestCase
 {
