@@ -1,7 +1,6 @@
 <?php
-chdir('..');
-include_once '../src/Epi.php';
-Epi::setPath('base', '../src');
+include_once 'epi/Epi.php';
+Epi::setPath('base', 'epi');
 Epi::setPath('config', dirname(__FILE__));
 Epi::init('route');
 
@@ -11,7 +10,7 @@ Epi::init('route');
  * ******************************************************************************************
  */
 getRoute()->load('routes.ini');
-getRoute()->run(); 
+getRoute()->run();
 
 /*
  * ******************************************************************************************
@@ -20,23 +19,35 @@ getRoute()->run();
  */
 class MyClass
 {
-  static public function MyMethod()
+  static public function GetSub($user_id)
   {
-    echo '<h1>You are looking at the output from MyClass::MyMethod</h1>
-          <ul>
-            <li><a href="/routes-in-ini-file">Call MyClass::MyMethod</a></li>
-            <li><a href="/routes-in-ini-file/anotherpage">Call MyClass::MyOtherMethod</a></li>
-            </ul>
-            <p><img src="https://github.com/images/modules/header/logov3-hover.png"></p>';
+    echo '<p>Get subscription</p>'.$user_id;
+    $date = date('Y-m-d H:i:s');
+    echo $date;
   }
 
-  static public function MyOtherMethod()
+  static public function NewSub($user_id)
   {
-    echo '<h1>You are looking at the output from MyClass::MyOtherMethod</h1>
-          <ul>
-            <li><a href="/routes-in-ini-file">Call MyClass::MyMethod</a></li>
-            <li><a href="/routes-in-ini-file/anotherpage">Call MyClass::MyOtherMethod</a></li>
-          </ul>
-          <p><img src="http://www.google.com/images/logos/ps_logo2.png"></p>';
+  	echo '<p>Create subscription</p>'.$user_id;
   }
+
+  static public function DelSub($user_id)
+  {
+    echo '<p>Delete subscription</p>'.$user_id;
+  }
+  
+  static public function EditSub($user_id)
+  {
+  	echo '<p>update subscripiton</p>'.$user_id;
+  }
+
+  static public function Poll()
+  {
+	echo '{ "result" : [{ "title":"Post 1","content":"content of post 1"}, {"title":"Post 2","content":"content of post 2"}] }';
+	$date = date('Y-m-d H:i:s');
+        ini_set("log_errors", 1);
+        ini_set("error_log", "/tmp/php-error.log");
+        error_log( "Poll request : $date" );
+  }
+
 }
