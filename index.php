@@ -2,6 +2,6 @@
 <head>
 </head>
 <body>
-Site is up
+Site is up - changed
 </body>
 </html>
